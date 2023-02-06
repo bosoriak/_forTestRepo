@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/_appItself/ApplicationUnderTest/UiTests/uiTests/.vs/uiTests/FileContentIndex
+/_appItself/ApplicationUnderTest/UiTests/uiTests/.vs/uiTests/DesignTimeBuild
+/_appItself/ApplicationUnderTest/UiTests/uiTests/.vs/uiTests/v17/TestStore
+/.vs/_forTestRepo/v17
+/_appItself/ApplicationUnderTest/UiTests/uiTests/obj/Debug
