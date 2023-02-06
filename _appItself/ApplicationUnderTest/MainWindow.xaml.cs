@@ -16,7 +16,8 @@ namespace ApplicationUnderTest
         {
             "no way",
             "yes way",
-            "maybe later"
+            "maybe later",
+            "nope."
         };
 
         public MainWindow()
