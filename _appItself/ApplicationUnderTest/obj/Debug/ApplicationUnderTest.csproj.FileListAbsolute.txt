@@ -1,0 +1,16 @@
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\bin\Debug\ApplicationUnderTest.exe.config
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\bin\Debug\ApplicationUnderTest.exe
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\bin\Debug\ApplicationUnderTest.pdb
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.csproj.AssemblyReference.cache
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.csproj.SuggestedBindingRedirects.cache
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\MainWindow.g.cs
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\App.g.cs
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest_MarkupCompile.cache
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest_MarkupCompile.lref
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\MainWindow.baml
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.g.resources
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.Properties.Resources.resources
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.csproj.GenerateResource.cache
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.csproj.CoreCompileInputs.cache
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.exe
+C:\MyRepos\_forTest\_appItself\ApplicationUnderTest\obj\Debug\ApplicationUnderTest.pdb
