@@ -9,11 +9,17 @@ namespace uiTests
         private SessionBase session;
 
         [OneTimeSetUp]
+        //public void Setup()
+        //{
+        //    session = new();
+        //    session.StartSession();
+        //    Thread.Sleep(5000);
+        //}
+
         public void Setup()
         {
-            session = new();
-            session.StartSession();
-            Thread.Sleep(5000);
+            session = new SessionBase();
+            session.StartSession2();
         }
 
         [Test]
@@ -21,11 +27,10 @@ namespace uiTests
 
         public void Click()
         {
+            Thread.Sleep(3000);
             WindowsElement button = session.Driver.FindElementByAccessibilityId("ButtonId");
             Thread.Sleep(1000);
             button.Click();
-            button.Click();
-            //comment
             WindowsElement textBox = session.Driver.FindElementByAccessibilityId("TextBoxId");
             Assert.That(textBox.GetAttribute("Value.Value"), Is.Not.Null);
         }

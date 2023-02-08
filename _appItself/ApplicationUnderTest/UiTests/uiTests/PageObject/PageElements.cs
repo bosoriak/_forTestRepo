@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace uiTests.PageObject
 {
-    internal class PageElements
+    public class PageElements
     {
     }
 }

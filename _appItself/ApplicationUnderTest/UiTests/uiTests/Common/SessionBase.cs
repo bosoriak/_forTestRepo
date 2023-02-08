@@ -11,6 +11,8 @@ namespace uiTests.Common
     {
         protected readonly CommonOptions? commonOptions;
         public WindowsDriver<WindowsElement>? Driver { get; set; }
+        private const int MaxMilisecondsToWait = 20000;
+        private const int Step = 1000;
 
         public WindowsDriver<WindowsElement> StartSession()
         {
@@ -20,6 +22,25 @@ namespace uiTests.Common
             Thread.Sleep(10000);
 
             return Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
+        }
+
+        public void StartSession2()
+        {
+            if (Driver != null)
+            {
+                TearDown();
+            }
+            var commonOptions = new CommonOptions();
+            var desktopAppiumOptions = commonOptions.appiumOptions;
+
+            Utilities.TryExecuteWithTimeout(() =>
+                {
+                    Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
+                }, 
+                () => Driver != null, 
+                MaxMilisecondsToWait, 
+                Step);
+
         }
 
         public void TearDown()
