@@ -24,6 +24,9 @@ namespace uiTests.Common
             return Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
         }
 
+
+       
+
         public void StartSession2()
         {
             if (Driver != null)
