@@ -14,20 +14,17 @@ namespace uiTests.Common
         private const int MaxMilisecondsToWait = 20000;
         private const int Step = 1000;
 
-        public WindowsDriver<WindowsElement> StartSession()
-        {
-            var commonOptions = new CommonOptions();
-            var desktopAppiumOptions = commonOptions.appiumOptions;
+        //public WindowsDriver<WindowsElement> StartSession()
+        //{
+        //    var commonOptions = new CommonOptions();
+        //    var desktopAppiumOptions = commonOptions.appiumOptions;
 
-            Thread.Sleep(10000);
+        //    Thread.Sleep(10000);
 
-            return Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
-        }
+        //    return Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
+        //}
 
-
-       
-
-        public void StartSession2()
+        public void StartSession()
         {
             if (Driver != null)
             {
@@ -36,14 +33,14 @@ namespace uiTests.Common
             var commonOptions = new CommonOptions();
             var desktopAppiumOptions = commonOptions.appiumOptions;
 
-            Utilities.TryExecuteWithTimeout(() =>
-                {
-                    Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions);
-                }, 
-                () => Driver != null, 
-                MaxMilisecondsToWait, 
-                Step);
-
+            Utilities.TryExecuteWithTimeout(
+                MaxMilisecondsToWait,
+                Step, 
+                () => { return Driver = new WindowsDriver<WindowsElement>(new Uri(commonOptions.WindowsApplicationDriverUrl), desktopAppiumOptions); }, 
+                () => Driver != null
+                );
+            
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
         }
 
         public void TearDown()

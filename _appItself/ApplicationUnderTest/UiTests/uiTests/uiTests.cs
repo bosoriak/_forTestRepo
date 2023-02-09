@@ -1,5 +1,6 @@
 using OpenQA.Selenium.Appium.Windows;
 using uiTests.Common;
+using uiTests.PageObject;
 
 namespace uiTests
 {
@@ -7,6 +8,7 @@ namespace uiTests
     public class Tests
     {
         private SessionBase session;
+        private PageElements pageElements;
 
         [OneTimeSetUp]
         //public void Setup()
@@ -19,20 +21,19 @@ namespace uiTests
         public void Setup()
         {
             session = new SessionBase();
-            session.StartSession2();
+            session.StartSession();
+            pageElements = new PageElements(session);
         }
 
+        
         [Test]
         [NonParallelizable]
 
-        public void Click()
+        public void ClickWithElements()
         {
-            Thread.Sleep(3000);
-            WindowsElement button = session.Driver.FindElementByAccessibilityId("ButtonId");
-            Thread.Sleep(1000);
-            button.Click();
-            WindowsElement textBox = session.Driver.FindElementByAccessibilityId("TextBoxId");
-            Assert.That(textBox.GetAttribute("Value.Value"), Is.Not.Null);
+            pageElements.Button.Click();
+            string text = pageElements.TextBox.GetAttribute("Value.Value");
+            Assert.That(text, Is.Not.Null);
         }
 
         [OneTimeTearDown]

@@ -15,7 +15,44 @@ namespace uiTests.Common
         * The method will keep executing the function and checking the condition until 
         * either the condition returns true or the timeout has been reached.
         */
-        public static void TryExecuteWithTimeout(Action function, Func<bool> condition, int timeout, int step)
+
+        public static T TryExecuteWithTimeout<T>(int timeout, int step, Func<T> function, Func<bool> condition)
+        {
+            int elapsedTime = 0;
+            while (elapsedTime < timeout && !condition())
+            {
+                try
+                {
+                    T result = function();
+                    if (condition())
+                    {
+                        return result;
+                    }
+                }
+                catch (Exception)
+                {
+                    elapsedTime += step;
+                    Thread.Sleep(step);
+                }
+            }
+            return function();
+        }
+
+        public static T? TryFindElement<T>(Func<T> func, Func<T, bool> condition = null, long? timeout = null)
+        {
+            var elementFound = TryExecuteWithTimeout(5000, 500, func, () => func() != null);
+            if (elementFound == null || condition is null)
+            {
+                return elementFound;
+            }
+
+            return TryExecuteWithTimeout(5000, 500, () => condition(elementFound), () => condition(elementFound)) ? elementFound : default(T);
+        }
+
+        /*
+         * TO BE INVESTIGATED LATER
+         */
+        public static void TryExecuteWithTimeoutStartSession(int timeout, int step, Action function, Func<bool> condition)
         {
             int elapsedTime = 0;
             while (elapsedTime < timeout && !condition())
@@ -35,5 +72,18 @@ namespace uiTests.Common
                 }
             }
         }
+        //public static T TryFindElement<T>(Func<T> func, Func<T, bool> condition = null, long? timeout = null)
+        //{
+        //    var elementFound = TryExecuteWithTimeout2(5000, 500, func, successCondition => successCondition != null);
+        //    if (elementFound == null || condition is null)
+        //    {
+        //        return elementFound;
+        //    }
+
+        //    return TryExecuteWithTimeout(5000, 500, () => condition(elementFound), successCondition => successCondition) ? elementFound : default;)
+        //}
+
+
+
     }
 }
