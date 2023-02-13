@@ -1,6 +1,8 @@
-﻿using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,10 +43,11 @@ namespace uiTests.Common
                 );
             
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                Driver.Manage().Window.Maximize();
         }
 
         public void TearDown()
-        {
+        {            
             Driver.Dispose();
             Driver.Close();
             Driver.Quit();

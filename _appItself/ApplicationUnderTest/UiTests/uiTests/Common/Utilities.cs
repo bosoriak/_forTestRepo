@@ -1,5 +1,9 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,16 +76,18 @@ namespace uiTests.Common
                 }
             }
         }
-        //public static T TryFindElement<T>(Func<T> func, Func<T, bool> condition = null, long? timeout = null)
-        //{
-        //    var elementFound = TryExecuteWithTimeout2(5000, 500, func, successCondition => successCondition != null);
-        //    if (elementFound == null || condition is null)
-        //    {
-        //        return elementFound;
-        //    }
+     public static void TakeScreenshot(WindowsDriver<WindowsElement> driver, string folderPathToScreensthot)
+        {            
+            var screenshot = driver.GetScreenshot();
+            string folderPath = folderPathToScreensthot;
+            string fileName = $"{TestContext.CurrentContext.Test.FullName}.png";
 
-        //    return TryExecuteWithTimeout(5000, 500, () => condition(elementFound), successCondition => successCondition) ? elementFound : default;)
-        //}
+            String timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+            var filePath = folderPath + timeStamp + fileName;
+            
+            screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Png);
+        }
 
 
 
