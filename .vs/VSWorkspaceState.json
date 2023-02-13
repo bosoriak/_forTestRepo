@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\_appItself",
+    "\\_appItself\\ApplicationUnderTest",
+    "\\_appItself\\ApplicationUnderTest\\UiTests",
+    "\\_appItself\\ApplicationUnderTest\\UiTests\\uiTests"
+  ],
+  "SelectedNode": "\\_appItself\\ApplicationUnderTest\\UiTests\\uiTests\\uiTests.sln",
+  "PreviewInSolutionExplorer": false
+}
