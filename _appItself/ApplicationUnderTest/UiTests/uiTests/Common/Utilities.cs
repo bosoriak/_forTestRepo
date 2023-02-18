@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,14 @@ namespace uiTests.Common
             screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Png);
         }
 
-
+    public static void DoNotRunMoreTestsIfThisOneFails(SessionBase session)
+        {
+            var result = TestContext.CurrentContext.Result.Outcome;
+            if (result != ResultState.Success)
+            {
+                session.failureOnStart = true;
+            }
+        }
 
     }
 }

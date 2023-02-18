@@ -26,7 +26,16 @@ namespace uiTests
             session.StartSession();
             pageElements = new PageElements(session);
         }
+       
 
+        [SetUp]
+        public void CheckIfTestShouldRun()
+        {
+            if (session.failureOnStart)
+            {
+                Assert.Fail();
+            }
+        }
         
         [Test, Description("TestCase1: Click on the Button and get non-null value in the Textbox")]
         [NonParallelizable]
@@ -36,7 +45,10 @@ namespace uiTests
         {
             pageElements.Button.Click();
             string text = pageElements.TextBox.GetAttribute("Value.Value");
+            // to simulate failure on start and fail of other tests, use:
+            // string text = pageElements.TextBox.GetAttribute("Text");
             Assert.That(text, Is.Not.Null);
+  
         }
 
         [Test, Description("TestCase2: 15 clicks on Button gives 4 or less distinct values, slow")]
@@ -78,12 +90,26 @@ namespace uiTests
         }
 
         [TearDown]
-        public void TakeScreenshotIfFail()
+        public void ScreenshotIfFail()
         {
             var result = TestContext.CurrentContext.Result.Outcome;
             if(result != ResultState.Success)
             {
                 Utilities.TakeScreenshot(session.Driver, @"C:\ScreenshotTestFails\");
+            }
+        }
+
+        [TearDown]
+        
+         // Set boolean start on failure to true, if the first test fails to make the result visible faster.
+         // in a bigger repo, this teardown would be valid for only testcases of Smoke category
+         
+        public void SetFailureOnStart()
+        {
+            var result = TestContext.CurrentContext.Result.Outcome;
+            if (result != ResultState.Success)
+            {
+               session.failureOnStart = true;
             }
         }
 

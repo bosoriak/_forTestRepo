@@ -16,6 +16,8 @@ namespace uiTests.Common
         private const int MaxMilisecondsToWait = 20000;
         private const int Step = 1000;
 
+        public bool failureOnStart = false;
+
         //public WindowsDriver<WindowsElement> StartSession()
         //{
         //    var commonOptions = new CommonOptions();
